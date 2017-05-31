@@ -5,10 +5,6 @@ upstream unicorn_<%= @application[:domains].first %> {
 server {
   listen 80;
 
-  if ($http_x_forwarded_proto != 'https') {
-    rewrite ^ https://$host$request_uri? permanent;
-  }
-
   server_name <%= @application[:domains].join(" ") %> <%= node[:hostname] %>;
 
   <% if @application[:log_format] %>
