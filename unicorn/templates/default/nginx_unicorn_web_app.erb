@@ -27,6 +27,17 @@ server {
     try_files $uri/index.html $uri/index.htm @unicorn;
   }
 
+  location /status {
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header Host $http_host;
+    proxy_redirect off;
+
+    proxy_read_timeout 60;
+    proxy_send_timeout 60;
+
+   proxy_pass http://unicorn_thebesty.com;
+  }
+
   location @unicorn {
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     proxy_set_header Host $http_host;
@@ -38,6 +49,10 @@ server {
   <% if node[:nginx] && node[:nginx][:proxy_send_timeout] -%>
     proxy_send_timeout <%= node[:nginx][:proxy_send_timeout] %>;
   <% end -%>
+
+    if ($http_x_forwarded_proto != 'https') {
+      return 301  https://$host$request_uri;
+    }
 
     # If you don't find the filename in the static files
     # Then request it from the unicorn server
