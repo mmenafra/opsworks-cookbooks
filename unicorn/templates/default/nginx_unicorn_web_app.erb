@@ -23,6 +23,8 @@ server {
     client_max_body_size <%= @application[:nginx][:client_max_body_size] %>;
   <% end %>
 
+  client_max_body_size 100M;
+
   location / {
     try_files $uri/index.html $uri/index.htm @unicorn;
   }
@@ -96,6 +98,8 @@ server {
   <% if @application[:nginx] && @application[:nginx][:client_max_body_size] %>
     client_max_body_size <%= @application[:nginx][:client_max_body_size] %>;
   <% end %>
+
+  client_max_body_size 100M;
 
   location / {
     try_files $uri/index.html $uri/index.htm @unicorn;
