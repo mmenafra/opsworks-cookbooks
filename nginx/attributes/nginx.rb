@@ -54,7 +54,8 @@ default[:nginx][:gzip_types] = ["application/x-javascript",
                                 "text/css",
                                 "text/javascript",
                                 "text/plain",
-                                "text/xml"]
+                                "text/xml",
+                                "application/json"]
 # NGinx will compress "text/html" by default
 
 default[:nginx][:keepalive] = "on"
