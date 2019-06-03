@@ -45,7 +45,7 @@ server {
     proxy_read_timeout 60;
     proxy_send_timeout 60;
 
-   proxy_pass http://unicorn_thebesty.com;
+   proxy_pass http://unicorn_<%= @application[:domains].first %>;
   }
 
   location @unicorn {
