@@ -23,14 +23,14 @@ execute 'download papertrail' do
   action :run
 end
 
-execute 'cd to folder' do
-  command 'cd remote_syslog'
+execute 'extract contents ' do
+  command 'tar xzf ./remote_syslog*.tar.gz'
   user 'root'
   action :run
 end
 
-execute 'extract contents ' do
-  command 'tar xzf ./remote_syslog*.tar.gz'
+execute 'cd to folder' do
+  command 'cd remote_syslog'
   user 'root'
   action :run
 end
