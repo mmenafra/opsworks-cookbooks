@@ -5,6 +5,4 @@ description      "Installs/Configures Sys Logging to papertrailapp.com"
 version          "0.0.7"
 name             "papertrail"
 
-depends          "rsyslog"
-
 recipe "papertrail", "Installs/Configures logging to papertrailapp.com"
