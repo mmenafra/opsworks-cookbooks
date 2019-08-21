@@ -42,7 +42,7 @@ execute 'copy contents ' do
 end
 
 execute 'run papertrail' do
-  command "sudo remote_syslog -p 21986 -d logs4.papertrailapp.com --pid-file=/var/run/remote_syslog.pid #{@application[:deploy_to]}shared/log/#{@application[:deploy_to]}.log"
+  command 'sudo remote_syslog -p 21986 -d logs4.papertrailapp.com --pid-file=/var/run/remote_syslog.pid /srv/www/utilities/shared/log/utilities.log'
   user 'root'
   action :run
 end
