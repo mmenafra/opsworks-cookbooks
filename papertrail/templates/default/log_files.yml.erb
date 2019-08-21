@@ -1,0 +1,9 @@
+files: 
+  - /path/to/your/file.log
+  #/srv/www/utilities/
+  - <%= "@#{application[:deploy_to]}shared/log/#{@application[:deploy_to]}.log"%>
+destination:
+  host: logs4.papertrailapp.com
+  port: 21986
+  protocol: tls
+pid_file: /var/run/remote_syslog.pid
